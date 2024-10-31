@@ -1,0 +1,48 @@
+{% extends  'base.html'%}
+{% load static %}
+{% load custom_filters %}
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block sidebar %}
+{% include 'include/_sidebar.html' %}
+{% endblock sidebar%}
+
+
+{% block content%}
+<form action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    {{ form.non_field.errors }}
+
+    <div class="form-group">
+        <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+        {{ form.username.errors }}
+        {{ form.username }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.email.id_for_label }}" class="form-label">email</label>
+        {{ form.email.errors}}
+        {{ form.email|add_class:"form-control " }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.password1.id_for_label }}" class="form-label">password1</label>
+        {{ form.password2.errors }}
+        {{ form.password1|add_class:"form-control" }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.password2.id_for_label }}" class="form-label">password2</label>
+        {{ form.password2.errors }}
+        {{ form.password2|add_class:"form-control" }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.age.id_for_label }}" class="form-label">Возраст</label>
+        {{ form.age|add_class:"form-control" }}
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+</form>
+{% endblock %}

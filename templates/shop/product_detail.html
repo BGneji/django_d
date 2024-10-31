@@ -1,0 +1,34 @@
+{% extends  'base.html'%}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block sidebar %}
+{% include 'include/_sidebar.html' %}
+{% endblock sidebar%}
+
+{% block content%}
+<div class="card mb-3">
+    <div class="card-header">
+        Категория: <a href="{{ products_item.category.get_absolute_url }}">{{ products_item.category }}</a>
+    </div>
+    <div class="card-body">
+        {% if news_item.photo %}
+        <img class="ml-3 float-left" src="{{ products_item.photo.url }}" alt="" width="350">
+        {% else %}
+        <h2>нет фото</h2>
+        {% endif %}
+        <h5 class="card-title">{{ products_item.name }}</h5>
+        <p class="card-text">{{ products_item.description }}</p>
+        <br>
+        <a class="btn btn-warning" href="{% url 'update_product' products_item.slug %}"> Изменение продукта</a>
+        <br>
+        <br>
+        <a class="btn btn-danger" href="{% url 'delete_product' products_item.slug %}"> Удаление продукта</a>
+    </div>
+    <div class="card-footer text-body-secondary">
+        {{ products_item.created_at | date:"Y-m-d H:i:s" }}
+    </div>
+</div>
+{% endblock %}

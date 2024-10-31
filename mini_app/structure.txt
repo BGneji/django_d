@@ -1,0 +1,11 @@
+Структура папок
+Серийный номер тома: 1C10-DCA0
+C:.
++---media
+¦   L---photos
++---static
+¦   +---bootstrap
+¦   ¦   +---css
+¦   ¦   L---js
+¦   L---css
+L---__pycache__
